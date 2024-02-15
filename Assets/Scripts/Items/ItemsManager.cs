@@ -1,31 +1,34 @@
 ﻿namespace AFSInterview.Items
 {
+	using System;
 	using TMPro;
 	using UnityEngine;
+    using Random = UnityEngine.Random;
 
-	public class ItemsManager : MonoBehaviour
+    public class ItemsManager : Singleton<ItemsManager>
 	{
+		public event Action<Item> ItemPickedUp;
+		[SerializeField] private TextMeshProUGUI moneyDisplay;
 		[SerializeField] private InventoryController inventoryController;
-		[SerializeField] private int itemSellMaxValue;
 		[SerializeField] private Transform itemSpawnParent;
 		[SerializeField] private GameObject itemPrefab;
 		[SerializeField] private BoxCollider itemSpawnArea;
 		[SerializeField] private float itemSpawnInterval;
-
-		private float nextItemSpawnTime;
 		
-		private void Update()
+		private float nextItemSpawnTime;
+
+        private void Update()
 		{
 			if (Time.time >= nextItemSpawnTime)
 				SpawnNewItem();
 			
 			if (Input.GetMouseButtonDown(0))
 				TryPickUpItem();
-			
-			if (Input.GetKeyDown(KeyCode.Space))
-				inventoryController.SellAllItemsUpToValue(itemSellMaxValue);
+		}
 
-			FindObjectOfType<TextMeshProUGUI>().text = "Money: " + inventoryController.Money;
+		public void SetMoneyOnDisplay(float money)
+		{
+			moneyDisplay.text = "Money: " + money;
 		}
 
 		private void SpawnNewItem()
@@ -50,8 +53,7 @@
 				return;
 			
 			var item = itemHolder.GetItem(true);
-            inventoryController.AddItem(item);
-            Debug.Log("Picked up " + item.Name + " with value of " + item.Value + " and now have " + inventoryController.ItemsCount + " items");
+			ItemPickedUp?.Invoke(item);
 		}
 	}
 }

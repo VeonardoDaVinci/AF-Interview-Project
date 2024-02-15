@@ -166,6 +166,7 @@ MonoBehaviour:
   - name: Plate Armor
     value: 300
   money: 280
+  itemSellMaxValue: 150
 --- !u!4 &117263
 Transform:
   m_ObjectHideFlags: 0
@@ -487,8 +488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6ca9eb0ebe4ffcb7fad76ea4a3b6ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyDisplay: {fileID: 1931683898}
   inventoryController: {fileID: 117262}
-  itemSellMaxValue: 150
   itemSpawnParent: {fileID: 246465938}
   itemPrefab: {fileID: 1329781387587706877, guid: 70297e35c79c32843b2cbbda048d720c,
     type: 3}
