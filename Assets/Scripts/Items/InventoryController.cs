@@ -6,7 +6,7 @@
 
 	public class InventoryController : MonoBehaviour
 	{
-		[SerializeField] private List<Item> items;
+		[SerializeField] private List<IItem> items;
 		[SerializeField] private int money;
         [SerializeField] private int itemSellMaxValue;
         public int Money => money;
@@ -21,7 +21,7 @@
             itemsManager.SetMoneyOnDisplay(money);
         }
 
-        private void ItemsManager_ItemPickedUp(Item item)
+        private void ItemsManager_ItemPickedUp(IItem item)
 		{
             AddItem(item);
 			Debug.Log("Picked up " + item.Name + " with value of " + item.Value + " and now have " + ItemsCount + " items");
@@ -49,7 +49,7 @@
 			}
 		}
 
-		public void AddItem(Item item)
+		public void AddItem(IItem item)
 		{
 			items.Add(item);
 		}

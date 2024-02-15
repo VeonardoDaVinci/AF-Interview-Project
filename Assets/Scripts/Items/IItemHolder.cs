@@ -2,6 +2,6 @@
 {
 	public interface IItemHolder
 	{
-		Item GetItem(bool disposeHolder);
+		IItem GetItem(bool disposeHolder);
 	}
 }

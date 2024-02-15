@@ -7,9 +7,8 @@
 
     public class ItemsManager : Singleton<ItemsManager>
 	{
-		public event Action<Item> ItemPickedUp;
+		public event Action<IItem> ItemPickedUp;
 		[SerializeField] private TextMeshProUGUI moneyDisplay;
-		[SerializeField] private InventoryController inventoryController;
 		[SerializeField] private Transform itemSpawnParent;
 		[SerializeField] private GameObject itemPrefab;
 		[SerializeField] private BoxCollider itemSpawnArea;

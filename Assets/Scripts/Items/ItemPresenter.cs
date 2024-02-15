@@ -4,9 +4,9 @@
 
 	public class ItemPresenter : MonoBehaviour, IItemHolder
 	{
-		[SerializeField] private Item item;
+		[SerializeField] private IItem item;
         
-		public Item GetItem(bool disposeHolder)
+		public IItem GetItem(bool disposeHolder)
 		{
 			if (disposeHolder)
 				Destroy(gameObject);
