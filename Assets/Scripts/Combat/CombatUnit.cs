@@ -9,16 +9,16 @@ namespace AFSInterview
         public Army ArmyMembership;
         public UnitData UnitData => data;
         [SerializeField] private UnitData data;
-
         private UnitState state;
 
         public int HealthPoints => health;
         private int health;
-        private CombatUnit(UnitData data)
+
+
+        private void Awake()
         {
             state = new WaitingState(this);
-            this.data = data;
-            this.health = data.HealthPoints;
+            health = UnitData.HealthPoints;
         }
 
         public void ChangeState(UnitState state)
@@ -28,6 +28,7 @@ namespace AFSInterview
 
         public void DoAction()
         {
+            if (state == null) state = new WaitingState(this);
             state.DoAction();
         }
 
@@ -36,6 +37,7 @@ namespace AFSInterview
             health -= amount;
             if (health > 0) return;
             ChangeState(new DeadState(this));
+            DoAction();
         }
     }
 }

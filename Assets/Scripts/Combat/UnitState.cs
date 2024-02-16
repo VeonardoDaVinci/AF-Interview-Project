@@ -27,12 +27,21 @@ namespace AFSInterview
         private int CalculateAttackDamage()
         {
             int attack = 0;
-            if (Unit.UnitData.AttackDamageOverride.Attribute.Equals(UnitAttribute.None)){
+            if (Unit.UnitData.AttackDamageOverride.Attribute.Equals(UnitAttribute.None))
+            {
                 attack = Unit.UnitData.AttackDamage - attackTarget.UnitData.ArmorPoints;
+                Debug.Log("Attack made by " + Unit.name + " on " + attackTarget.name + " for " + attack);
+                return attack > 1 ? attack : 1;
             }
-            else if (attackTarget.UnitData.Attribute.HasFlag(Unit.UnitData.AttackDamageOverride.Attribute))
+            if (attackTarget.UnitData.Attribute.HasFlag(Unit.UnitData.AttackDamageOverride.Attribute))
             {
                 attack = Unit.UnitData.AttackDamageOverride.AttackDamage - attackTarget.UnitData.ArmorPoints;
+                Debug.Log("Attack made by " + Unit.name + " on " + attackTarget.name + " for " + attack);
+            }
+            else 
+            {
+                attack = Unit.UnitData.AttackDamage - attackTarget.UnitData.ArmorPoints;
+                Debug.Log("Attack made by " + Unit.name + " on " + attackTarget.name + " for " + attack);
             }
             return attack > 1 ? attack : 1;
         }
@@ -61,8 +70,8 @@ namespace AFSInterview
     {
         public override void DoAction()
         {
-            
+            CombatManager.Instance.RemoveUnitFromCombat(Unit);
         }
-        public DeadState(CombatUnit unit) : base(unit) { }
+        public DeadState(CombatUnit unit) : base(unit) { Debug.Log("Create dead state for "+Unit.UnitData.name); }
     }
 }

@@ -595,8 +595,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a453ec641200a724aab66cdf17a33070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitPrefabs:
+  - {fileID: 3587027775537310748, guid: 67dbc58605f20014fa0ec0ce4ab9e9c2, type: 3}
+  - {fileID: 3587027775537310748, guid: 67dbc58605f20014fa0ec0ce4ab9e9c2, type: 3}
+  - {fileID: 3587027775537310748, guid: 8661e423c05936b4187676d33a011150, type: 3}
+  - {fileID: 3587027775537310748, guid: 7faf71625e34d684b81856a1f7c05f76, type: 3}
   armySpawnArea: {fileID: 278868170}
-  units: []
 --- !u!65 &278868170
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -763,6 +767,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac14653c3ca0ca54db01a8d6d25658ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitsInOrder: []
+  armyList:
+  - {fileID: 278868169}
+  - {fileID: 1353391287}
+  timeBetweenActions: 1
 --- !u!1 &726838010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,6 +1389,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1353391285}
+  - component: {fileID: 1353391287}
+  - component: {fileID: 1353391286}
   m_Layer: 0
   m_Name: Army2
   m_TagString: Untagged
@@ -1402,6 +1413,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1353391286
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353391284}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 8.47723, y: 1, z: 12.950886}
+  m_Center: {x: 0.45596123, y: 0, z: 1.330097}
+--- !u!114 &1353391287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353391284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a453ec641200a724aab66cdf17a33070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitPrefabs:
+  - {fileID: 3587027775537310748, guid: 4edecd3282b2f3342b5e0861c45add60, type: 3}
+  - {fileID: 3587027775537310748, guid: 4edecd3282b2f3342b5e0861c45add60, type: 3}
+  - {fileID: 3587027775537310748, guid: 4edecd3282b2f3342b5e0861c45add60, type: 3}
+  - {fileID: 3587027775537310748, guid: ebd15c299932a45408d5c0df0fe03d3d, type: 3}
+  - {fileID: 3587027775537310748, guid: 7faf71625e34d684b81856a1f7c05f76, type: 3}
+  armySpawnArea: {fileID: 1353391286}
 --- !u!4 &1362504115 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6760591476060598716, guid: 70297e35c79c32843b2cbbda048d720c,

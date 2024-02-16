@@ -16,7 +16,7 @@ MonoBehaviour:
   HealthPoints: 10
   ArmorPoints: 5
   AttackInterval: 2
-  AttackDamage: 20
+  AttackDamage: 50
   AttackDamageOverride:
     Attribute: 4
-    AttackDamage: 5
+    AttackDamage: 10

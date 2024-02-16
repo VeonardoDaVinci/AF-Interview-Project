@@ -9,11 +9,34 @@ namespace AFSInterview
     {
         [SerializeField] private List<CombatUnit> unitsInOrder;
         [SerializeField] private List<Army> armyList;
-
+        [SerializeField] private float timeBetweenActions = 1f;
+        private float currentTimeBetweenActions;
+        private int currenUnitIndex;
+        private bool isCombatInProgress = true;
         private void Start()
         {
             InitializeUnitOrder();
+            currentTimeBetweenActions = timeBetweenActions;
         }
+
+        private void Update()
+        {
+            if (!isCombatInProgress) return;
+            currentTimeBetweenActions -= Time.deltaTime;
+            if(currentTimeBetweenActions <= 0)
+            {
+                currentTimeBetweenActions = timeBetweenActions;
+                DoNextCombatAction();
+            }
+        }
+
+        private void DoNextCombatAction()
+        {
+            unitsInOrder[currenUnitIndex].DoAction();
+            currenUnitIndex++;
+            currenUnitIndex %= unitsInOrder.Count;
+        }
+
         private void InitializeUnitOrder()
         {
             List<CombatUnit> tempUnitList = new List<CombatUnit>();
@@ -49,6 +72,11 @@ namespace AFSInterview
         {
             unitsInOrder.Remove(unit);
             unit.ArmyMembership.RemoveUnit(unit);
+            if(unit.ArmyMembership.Units.Count == 0)
+            {
+                isCombatInProgress = false;
+            }
+            
         }
     }
 }
