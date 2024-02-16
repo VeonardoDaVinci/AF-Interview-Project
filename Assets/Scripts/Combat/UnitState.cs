@@ -6,39 +6,63 @@ namespace AFSInterview
 {
     public abstract class UnitState
     {
-        protected Unit Unit { get; set; }
-        protected abstract void DoAction();
+        protected CombatUnit Unit { get; set; }
+        public abstract void DoAction();
 
-        protected UnitState(Unit unit)
+        protected UnitState(CombatUnit unit)
         {
             Unit = unit;
         }
     }
 
-    public class ReadyState : UnitState
+    public class AttackState : UnitState
     {
-        protected override void DoAction()
+        private CombatUnit attackTarget;
+        public override void DoAction()
         {
-            throw new System.NotImplementedException();
+            attackTarget = CombatManager.Instance.GetRandomEnemyArmy(Unit.ArmyMembership).GetRandomUnit();
+            attackTarget.TakeDamage(CalculateAttackDamage());
+            Unit.ChangeState(new WaitingState(Unit));
         }
-        ReadyState(Unit unit) : base(unit) { }
+        private int CalculateAttackDamage()
+        {
+            int attack = 0;
+            if (Unit.UnitData.AttackDamageOverride.Attribute.Equals(UnitAttribute.None)){
+                attack = Unit.UnitData.AttackDamage - attackTarget.UnitData.ArmorPoints;
+            }
+            else if (attackTarget.UnitData.Attribute.HasFlag(Unit.UnitData.AttackDamageOverride.Attribute))
+            {
+                attack = Unit.UnitData.AttackDamageOverride.AttackDamage - attackTarget.UnitData.ArmorPoints;
+            }
+            return attack > 1 ? attack : 1;
+        }
+        public AttackState(CombatUnit unit) : base(unit) { }
     }
 
     public class WaitingState : UnitState
     {
-        protected override void DoAction()
+        private int cooldown;
+        public override void DoAction()
         {
-            throw new System.NotImplementedException();
+            cooldown--;
+            if(cooldown <= 0)
+            {
+                Unit.ChangeState(new AttackState(Unit));
+                Unit.DoAction();
+            }
         }
-        WaitingState(Unit unit) : base(unit) { }
+        public WaitingState(CombatUnit unit) : base(unit) 
+        {
+            cooldown = unit.UnitData.AttackInterval;
+        }
     }
 
     public class DeadState : UnitState
     {
-        protected override void DoAction()
+        public override void DoAction()
         {
-            throw new System.NotImplementedException();
+            
         }
-        DeadState(Unit unit) : base(unit) { }
+        public DeadState(CombatUnit unit) : base(unit) { }
     }
 }
