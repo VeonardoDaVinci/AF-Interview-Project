@@ -13,8 +13,10 @@
 		[SerializeField] private GameObject itemPrefab;
 		[SerializeField] private BoxCollider itemSpawnArea;
 		[SerializeField] private float itemSpawnInterval;
-		
+		[SerializeField] private int maxItemCount = 20;
+
 		private float nextItemSpawnTime;
+		private int currentItemCount;
 
         private void Update()
 		{
@@ -33,14 +35,14 @@
 		private void SpawnNewItem()
 		{
 			nextItemSpawnTime = Time.time + itemSpawnInterval;
-			
+			if (currentItemCount >= maxItemCount) return;
 			var spawnAreaBounds = itemSpawnArea.bounds;
 			var position = new Vector3(
 				Random.Range(spawnAreaBounds.min.x, spawnAreaBounds.max.x),
 				0f,
 				Random.Range(spawnAreaBounds.min.z, spawnAreaBounds.max.z)
 			);
-			
+			currentItemCount++;
 			Instantiate(itemPrefab, position, Quaternion.identity, itemSpawnParent);
 		}
 
@@ -51,6 +53,7 @@
 			if (!Physics.Raycast(ray, out var hit, 100f, layerMask) || !hit.collider.TryGetComponent<IItemHolder>(out var itemHolder))
 				return;
 			
+			currentItemCount--;
 			var item = itemHolder.GetItem(true);
 			ItemPickedUp?.Invoke(item);
 		}
