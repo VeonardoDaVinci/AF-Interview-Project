@@ -22,25 +22,30 @@
         }
 
         private void ItemsManager_ItemPickedUp(Item item)
-		{
-			switch (item.Type)
-			{
-				case ItemType.Generic:
-					AddItem(item);
-					break;
-				case ItemType.Consumable:
-					if(item.PickupItem.ItemData != null)
-					{
-						AddItem(item.PickupItem);
-						break;
-					}
-					AddMoney(item.Value);
-					break;
-			}
+        {
+            PickupItem(item);
+        }
 
-			Debug.Log("Picked up " + item.Name + " with value of " + item.Value + " and now have " + ItemsCount + " items");
-		}
-		private void Update()
+        private void PickupItem(Item item)
+        {
+            switch (item.Type)
+            {
+                case ItemType.Generic:
+                    AddItem(item);
+                    break;
+                case ItemType.Consumable:
+                    if (item.PickupItem.ItemData != null && item.PickupItem.ItemData != item.ItemData)
+                    {
+                        PickupItem(item.PickupItem);
+                        break;
+                    }
+                    AddMoney(item.Value);
+                    break;
+            }
+            Debug.Log("Picked up " + item.Name + " with value of " + item.Value + " and now have " + ItemsCount + " items");
+        }
+
+        private void Update()
 		{
 			if (Input.GetKeyDown(KeyCode.Space))
                 SellAllItemsUpToValue(itemSellMaxValue);

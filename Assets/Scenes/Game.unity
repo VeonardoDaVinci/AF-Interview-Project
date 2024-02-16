@@ -152,7 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6319dbe5584eacb6e3452a3a90017b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - data: {fileID: 11400000, guid: 0852f102fd8151348ba4a35b493d5c6d, type: 2}
+  - data: {fileID: 11400000, guid: 8d271759aba11434b97a604f8c1bf3b5, type: 2}
+  - data: {fileID: 11400000, guid: a7183f9e676e7384ba7bec3e5e2a7bf4, type: 2}
+  - data: {fileID: 11400000, guid: d08f1c6dfc88c4b4e9e3ef55701c13be, type: 2}
   money: 280
   itemSellMaxValue: 150
 --- !u!4 &117263

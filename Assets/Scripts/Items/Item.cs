@@ -2,7 +2,11 @@
 {
 	using System;
 	using UnityEngine;
-
+    /// <summary>
+    /// ItemType.Generic - The item gets picked up as is.
+    /// ItemType.Consumable - The item gets consumed. If PickupItem is specified, that is what gets picked up.
+	/// Else the player receives money according to specified Value.
+    /// </summary>
     public enum ItemType
     {
         Generic,

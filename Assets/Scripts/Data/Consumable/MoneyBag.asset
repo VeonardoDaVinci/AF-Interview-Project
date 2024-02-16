@@ -15,4 +15,5 @@ MonoBehaviour:
   Name: MoneyBag
   Value: 100
   Type: 1
-  PickupItem: {fileID: 0}
+  PickupItem:
+    data: {fileID: 0}
