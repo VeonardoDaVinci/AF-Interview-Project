@@ -602,6 +602,7 @@ MonoBehaviour:
   - {fileID: 3587027775537310748, guid: 8661e423c05936b4187676d33a011150, type: 3}
   - {fileID: 3587027775537310748, guid: 7faf71625e34d684b81856a1f7c05f76, type: 3}
   armySpawnArea: {fileID: 278868170}
+  unitSafeSpawnRadius: 2
 --- !u!65 &278868170
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -771,7 +772,7 @@ MonoBehaviour:
   armyList:
   - {fileID: 278868169}
   - {fileID: 1353391287}
-  timeBetweenActions: 2
+  timeBetweenActions: 1
 --- !u!1 &726838010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,8 +1433,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.47723, y: 1, z: 12.950886}
-  m_Center: {x: 0.45596123, y: 0, z: 1.330097}
+  m_Size: {x: 5.7558565, y: 1, z: 12.950886}
+  m_Center: {x: 1.816648, y: 0, z: 1.3300972}
 --- !u!114 &1353391287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1453,6 +1454,7 @@ MonoBehaviour:
   - {fileID: 3587027775537310748, guid: ebd15c299932a45408d5c0df0fe03d3d, type: 3}
   - {fileID: 3587027775537310748, guid: 7faf71625e34d684b81856a1f7c05f76, type: 3}
   armySpawnArea: {fileID: 1353391286}
+  unitSafeSpawnRadius: 2
 --- !u!4 &1362504115 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6760591476060598716, guid: 70297e35c79c32843b2cbbda048d720c,

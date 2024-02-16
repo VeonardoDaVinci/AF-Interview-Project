@@ -10,8 +10,7 @@ namespace AFSInterview
         private List<CombatUnit> unitsInOrder = new ();
         [SerializeField] private List<Army> armyList;
         [SerializeField] private float timeBetweenActions = 1f;
-        private float currentTimeBetweenActions;
-        private int currenUnitIndex;
+        [SerializeField] private int currentUnitIndex = 0;
         private bool isCombatInProgress = true;
         private void Start()
         {
@@ -19,10 +18,6 @@ namespace AFSInterview
             StartCoroutine(CombatProceedRoutine(timeBetweenActions));
         }
 
-        private void Update()
-        {
-            Debug.Log(Time.deltaTime);
-        }
 
         private IEnumerator CombatProceedRoutine(float timeBetweenSteps)
         {
@@ -33,11 +28,11 @@ namespace AFSInterview
             }
         }
 
-        private void DoNextCombatAction()
+        public void DoNextCombatAction()
         {
-            unitsInOrder[currenUnitIndex].DoAction();
-            currenUnitIndex++;
-            currenUnitIndex %= unitsInOrder.Count;
+            unitsInOrder[currentUnitIndex].DoAction();
+            currentUnitIndex++;
+            currentUnitIndex %= unitsInOrder.Count;
         }
 
         private void InitializeUnitOrder()
@@ -73,6 +68,11 @@ namespace AFSInterview
 
         public void RemoveUnitFromCombat(CombatUnit unit)
         {
+            int removedObjectIndex = unitsInOrder.IndexOf(unit);
+            if(removedObjectIndex <= currentUnitIndex)
+            {
+                currentUnitIndex--;
+            }
             unitsInOrder.Remove(unit);
             unit.ArmyMembership.RemoveUnit(unit);
             if(unit.ArmyMembership.Units.Count == 0)

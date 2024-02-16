@@ -56,6 +56,7 @@ namespace AFSInterview
             {
                 Unit.ChangeState(new AttackState(Unit));
                 Unit.DoAction();
+                return;
             }
         }
         public WaitingState(CombatUnit unit) : base(unit) 
