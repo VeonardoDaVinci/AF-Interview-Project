@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: LongSwordKnigth
   m_EditorClassIdentifier: 
   Attribute: 1
-  HealthPoints: 10
+  HealthPoints: 20
   ArmorPoints: 10
-  AttackInterval: 2
+  AttackInterval: 1
   AttackDamage: 20
   AttackDamageOverride:
     Attribute: 0
