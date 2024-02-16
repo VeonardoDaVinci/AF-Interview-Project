@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+
 namespace AFSInterview
 {
     public abstract class UnitState
@@ -20,7 +22,11 @@ namespace AFSInterview
         public override void DoAction()
         {
             attackTarget = CombatManager.Instance.GetRandomEnemyArmy(Unit.ArmyMembership).GetRandomUnit();
-            attackTarget.TakeDamage(CalculateAttackDamage());
+            if(attackTarget!= null)
+            {
+                attackTarget.TakeDamage(CalculateAttackDamage());
+                Unit.transform.DOScale(1.2f, 0.1f).SetLoops(2, LoopType.Yoyo);
+            }
             Unit.ChangeState(new WaitingState(Unit));
         }
         private int CalculateAttackDamage()
@@ -29,13 +35,12 @@ namespace AFSInterview
             if (attackTarget.UnitData.Attribute.HasFlag(Unit.UnitData.AttackDamageOverride.Attribute) && !Unit.UnitData.AttackDamageOverride.Attribute.Equals(UnitAttribute.None))
             {
                 attack = Unit.UnitData.AttackDamageOverride.AttackDamage - attackTarget.UnitData.ArmorPoints;
-                Debug.Log("Attack made by " + Unit.name + " on " + attackTarget.name + " for " + attack);
             }
             else 
             {
                 attack = Unit.UnitData.AttackDamage - attackTarget.UnitData.ArmorPoints;
-                Debug.Log("Attack made by " + Unit.name + " on " + attackTarget.name + " for " + attack);
             }
+            Debug.Log("Attack made by " + Unit.name + " on " + attackTarget.name + " for " + attack + " damage.");
             return attack > 1 ? attack : 1;
         }
         public AttackState(CombatUnit unit) : base(unit) { }

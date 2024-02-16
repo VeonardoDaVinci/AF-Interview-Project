@@ -7,7 +7,7 @@ namespace AFSInterview
 {
     public class CombatManager : Singleton<CombatManager>
     {
-        [SerializeField] private List<CombatUnit> unitsInOrder;
+        private List<CombatUnit> unitsInOrder = new ();
         [SerializeField] private List<Army> armyList;
         [SerializeField] private float timeBetweenActions = 1f;
         private float currentTimeBetweenActions;
@@ -16,16 +16,19 @@ namespace AFSInterview
         private void Start()
         {
             InitializeUnitOrder();
-            currentTimeBetweenActions = timeBetweenActions;
+            StartCoroutine(CombatProceedRoutine(timeBetweenActions));
         }
 
         private void Update()
         {
-            if (!isCombatInProgress) return;
-            currentTimeBetweenActions -= Time.deltaTime;
-            if(currentTimeBetweenActions <= 0)
+            Debug.Log(Time.deltaTime);
+        }
+
+        private IEnumerator CombatProceedRoutine(float timeBetweenSteps)
+        {
+            while(isCombatInProgress)
             {
-                currentTimeBetweenActions = timeBetweenActions;
+                yield return new WaitForSeconds(timeBetweenSteps);
                 DoNextCombatAction();
             }
         }

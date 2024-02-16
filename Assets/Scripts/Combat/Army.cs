@@ -39,8 +39,8 @@ namespace AFSInterview
 
         public void RemoveUnit(CombatUnit unit)
         {
-            spawnedUnits.Remove(unit);
             Destroy(unit.gameObject);
+            spawnedUnits.Remove(unit);
         }
     }
 }
