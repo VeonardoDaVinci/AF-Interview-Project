@@ -6,7 +6,7 @@
 
 	public class InventoryController : MonoBehaviour
 	{
-		[SerializeField] private List<IItem> items;
+		[SerializeField] private List<Item> items;
 		[SerializeField] private int money;
         [SerializeField] private int itemSellMaxValue;
         public int Money => money;
@@ -21,9 +21,23 @@
             itemsManager.SetMoneyOnDisplay(money);
         }
 
-        private void ItemsManager_ItemPickedUp(IItem item)
+        private void ItemsManager_ItemPickedUp(Item item)
 		{
-            AddItem(item);
+			switch (item.Type)
+			{
+				case ItemType.Generic:
+					AddItem(item);
+					break;
+				case ItemType.Consumable:
+					if(item.PickupItem.ItemData != null)
+					{
+						AddItem(item.PickupItem);
+						break;
+					}
+					AddMoney(item.Value);
+					break;
+			}
+
 			Debug.Log("Picked up " + item.Name + " with value of " + item.Value + " and now have " + ItemsCount + " items");
 		}
 		private void Update()
@@ -36,20 +50,25 @@
 		{
 			int i = 0;
 			while (i < items.Count)
-			{
-				var itemValue = items[i].Value;
-				if (itemValue > maxValue)
-				{
-					i++;
-					continue;
-				}
-				money += itemValue;
-				items.RemoveAt(i);
-				itemsManager.SetMoneyOnDisplay(money);
-			}
-		}
+            {
+                var itemValue = items[i].Value;
+                if (itemValue > maxValue)
+                {
+                    i++;
+                    continue;
+                }
+                AddMoney(itemValue);
+                items.RemoveAt(i);
+            }
+        }
 
-		public void AddItem(IItem item)
+        private void AddMoney(int itemValue)
+        {
+            money += itemValue;
+            itemsManager.SetMoneyOnDisplay(money);
+        }
+
+        public void AddItem(Item item)
 		{
 			items.Add(item);
 		}

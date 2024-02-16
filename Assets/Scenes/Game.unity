@@ -152,19 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6319dbe5584eacb6e3452a3a90017b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - name: Wooden shield
-    value: 90
-  - name: Bow
-    value: 150
-  - name: Mana Potion
-    value: 60
-  - name: Sword
-    value: 130
-  - name: Long Sword
-    value: 160
-  - name: Plate Armor
-    value: 300
+  items: []
   money: 280
   itemSellMaxValue: 150
 --- !u!4 &117263
@@ -197,6 +185,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
         type: 3}
+      propertyPath: item.data
+      value: 
+      objectReference: {fileID: 11400000, guid: ab51bfdfec024ee46b0aaa3ccf7fa0bc,
+        type: 2}
+    - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
       propertyPath: item.name
       value: Orange
       objectReference: {fileID: 0}
@@ -205,6 +199,11 @@ PrefabInstance:
       propertyPath: item.value
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 5390047537416507985, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d57e1de5911b7942ae8a642c16e734f, type: 2}
     - target: {fileID: 6760591476060598716, guid: 70297e35c79c32843b2cbbda048d720c,
         type: 3}
       propertyPath: m_RootOrder
@@ -278,6 +277,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
+      propertyPath: item.data
+      value: 
+      objectReference: {fileID: 11400000, guid: d985fa7d905372342bf06d693d4500a7,
+        type: 2}
     - target: {fileID: 6760591476060598716, guid: 70297e35c79c32843b2cbbda048d720c,
         type: 3}
       propertyPath: m_RootOrder
@@ -489,7 +494,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyDisplay: {fileID: 1931683898}
-  inventoryController: {fileID: 117262}
   itemSpawnParent: {fileID: 246465938}
   itemPrefab: {fileID: 1329781387587706877, guid: 70297e35c79c32843b2cbbda048d720c,
     type: 3}
@@ -586,6 +590,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
+      propertyPath: item.data
+      value: 
+      objectReference: {fileID: 11400000, guid: 721487eb71380d34db1538f88d8bbb97,
+        type: 2}
+    - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
+      propertyPath: item.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5390047537416507985, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d57e1de5911b7942ae8a642c16e734f, type: 2}
     - target: {fileID: 6760591476060598716, guid: 70297e35c79c32843b2cbbda048d720c,
         type: 3}
       propertyPath: m_RootOrder
@@ -783,6 +803,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
+      propertyPath: item.data
+      value: 
+      objectReference: {fileID: 11400000, guid: d985fa7d905372342bf06d693d4500a7,
+        type: 2}
     - target: {fileID: 6760591476060598716, guid: 70297e35c79c32843b2cbbda048d720c,
         type: 3}
       propertyPath: m_RootOrder
@@ -1011,6 +1037,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
+      propertyPath: item.data
+      value: 
+      objectReference: {fileID: 11400000, guid: d985fa7d905372342bf06d693d4500a7,
+        type: 2}
     - target: {fileID: 6760591476060598716, guid: 70297e35c79c32843b2cbbda048d720c,
         type: 3}
       propertyPath: m_RootOrder
@@ -1084,6 +1116,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
+      propertyPath: item.data
+      value: 
+      objectReference: {fileID: 11400000, guid: 516e6530b7c0c524c858a9ca4993a609,
+        type: 2}
     - target: {fileID: 6760591476060598716, guid: 70297e35c79c32843b2cbbda048d720c,
         type: 3}
       propertyPath: m_RootOrder
@@ -1218,6 +1256,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
         type: 3}
+      propertyPath: item.data
+      value: 
+      objectReference: {fileID: 11400000, guid: e8b556eef74166941931a49c89ca6db5,
+        type: 2}
+    - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
       propertyPath: item.name
       value: Carrot
       objectReference: {fileID: 0}
@@ -1336,6 +1380,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
+      propertyPath: item.data
+      value: 
+      objectReference: {fileID: 11400000, guid: d985fa7d905372342bf06d693d4500a7,
+        type: 2}
     - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
         type: 3}
       propertyPath: item.name
@@ -1457,6 +1507,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
+      propertyPath: item.data
+      value: 
+      objectReference: {fileID: 11400000, guid: e8b556eef74166941931a49c89ca6db5,
+        type: 2}
     - target: {fileID: 6760591476060598716, guid: 70297e35c79c32843b2cbbda048d720c,
         type: 3}
       propertyPath: m_RootOrder
@@ -1929,6 +1985,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 1562054653796185208, guid: 70297e35c79c32843b2cbbda048d720c,
+        type: 3}
+      propertyPath: item.data
+      value: 
+      objectReference: {fileID: 11400000, guid: d985fa7d905372342bf06d693d4500a7,
+        type: 2}
     - target: {fileID: 6760591476060598716, guid: 70297e35c79c32843b2cbbda048d720c,
         type: 3}
       propertyPath: m_RootOrder

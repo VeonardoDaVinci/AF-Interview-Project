@@ -3,21 +3,24 @@
 	using System;
 	using UnityEngine;
 
-	[Serializable]
-	public class Item : IItem
-	{
-		[SerializeField] private string name;
-		[SerializeField] private int value;
-		[SerializeField] private ItemType type;
-		public string Name => name;
-		public int Value => value;
-		public ItemType Type => type;
+    public enum ItemType
+    {
+        Generic,
+        Consumable
+    }
+    [Serializable]
+	public class Item
+    {
+		[SerializeField] private ItemData data;
+		public ItemData ItemData => data;
+		public string Name => data.Name;
+		public int Value => data.Value;
+		public ItemType Type => data.Type;
+		public Item PickupItem => data.PickupItem;
 
-        public Item(string name, int value, ItemType type)
+        public Item(ItemData data)
 		{
-			this.name = name;
-			this.value = value;
-			this.type = type;
+			this.data= data;
 		}
 
 		public void Use()

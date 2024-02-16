@@ -47,8 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item:
-    name: Apple
-    value: 10
+    data: {fileID: 11400000, guid: d985fa7d905372342bf06d693d4500a7, type: 2}
 --- !u!65 &8426643071871308913
 BoxCollider:
   m_ObjectHideFlags: 0
